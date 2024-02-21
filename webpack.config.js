@@ -3,6 +3,7 @@
 const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 const urlDev = "https://localhost:3000/";
 const urlProd = "https://www.contoso.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
@@ -40,6 +41,11 @@ module.exports = async (env, options) => {
           },
         },
         {
+          test: /\.css$/i,
+          include: path.resolve(__dirname, "src"),
+          use: ["style-loader", "css-loader", "postcss-loader"],
+        },
+        {
           test: /\.html$/,
           exclude: /node_modules/,
           use: "html-loader",
@@ -50,7 +56,7 @@ module.exports = async (env, options) => {
           generator: {
             filename: "assets/[name][ext][query]",
           },
-        },
+        }
       ],
     },
     plugins: [
