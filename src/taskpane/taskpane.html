@@ -19,14 +19,57 @@
 <!--    <link href="taskpane.css" rel="stylesheet" type="text/css" />-->
 </head>
 
-<body>
-    <main id="app-body" style="display: none;">
-        <div id="show-review">
-            <label>
-                <textarea id="textarea-text" class="textarea-c"></textarea>
-            </label>
-            <button class="text-2xl text-cyan-400" id="review">Start review</button><br><br>
-        </div>
+<body class="min-h-screen mx-auto px-4">
+    <div class="sticky grid grid-cols-2 bg-white border-2 border-black text-black p-3 mb-3 rounded-full">
+        <button id="btn-tab-review" type="button" class="btn-review">Review</button>
+        <button id="btn-tab-draft" type="button" class="btn-draft">Draft</button>
+    </div>
+    <main id="app-body" class="flex flex-col text-sm pb-10" style="display: none;">
+        <section id="tab-review" class="hidden flex-col justify-center">
+            <div class="text-center w-full">
+                <label>
+                    <textarea id="textarea-text" class="textarea-review"></textarea>
+                </label>
+                <button type="button" class="btn font-bold bg-white" id="btn-review">Start Review</button><br><br>
+            </div>
+
+            <!--        show suggestion change-->
+            <div id="show-items" class="hidden flex-col w-full rounded ring-2 ring-offset-2 ring-black">
+                <div class="bg-black p-2 rounded-t">
+                    <span class="text-white">Suggestion</span>
+                </div>
+                <div id="items" class="h-full bg-white p-4">
+                    <!--bind dynamic text-->
+                    <p id="edited-text"></p>
+
+                    <!--apply change/cancel button -->
+                    <div id="group-button-items" class="pt-5 inline-flex space-x-2">
+                        <button type="button" id="apply-change" class="btn text-black outline text-xs">Apply Change</button>
+                        <button type="button" id="cancel" class="btn bg-gray-100 text-xs">Cancel</button>
+                    </div>
+                </div>
+                <!--comment-->
+                <div>
+                    <ul id="comments" class="flex flex-col p-2">
+                        <li class="comment-item">This feedback so good. Thanks</li>
+                        <li class="comment-item">I can do it later. The comment has fixed</li>
+                        <li class="comment-item">This feedback so good. Thanks. I can do it later. The comment has fixed</li>
+                    </ul>
+                </div>
+                <label for="input-comment" class="p-2 bg-gray-200 rounded-b relative">
+                    <input id="input-comment" type="text" placeholder="comment..." class="px-2 rounded w-full h-[35px]" />
+                    <span id="comment-tip" class="hidden text-gray-600">Tip: Press Command + Enter to post</span>
+                    <button id="btn-comment" type="button" class="absolute top-[12px] right-[10px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#a1a1a1" fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12a9.97 9.97 0 0 0 .951 4.262l-.93 4.537a1 1 0 0 0 1.18 1.18l4.537-.93c1.294.61 2.74.95 4.262.95c5.523 0 10-4.476 10-10c0-5.522-4.477-10-10-10" clip-rule="evenodd"/></svg>
+                    </button>
+                </label>
+            </div>
+        </section>
+
+        <section id="tab-draft" class="hidden justify-center">
+            <h1>Draft replicate document</h1>
+        </section>
+
     </main>
 </body>
 

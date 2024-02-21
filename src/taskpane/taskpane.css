@@ -15,9 +15,25 @@
      padding: 0;
  }
 
-#show-review {
-    .textarea-c {
-        @apply min-h-[250px] min-w-[400px];
-    }
+ .btn {
+     @apply rounded p-2;
+ }
+
+ .btn-text-gradient {
+     @apply text-transparent bg-clip-text;
+ }
+
+ .btn-active {
+     @apply text-blue-600 font-bold;
+ }
+
+.textarea-review {
+    @apply min-h-[200px] w-full p-2 rounded;
 }
+
+.comment-item {
+    @apply m-2 flex space-y-2;
+}
+
+
 
